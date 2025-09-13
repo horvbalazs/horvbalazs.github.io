@@ -1,0 +1,1 @@
+export const TIME_TICK = 1; // In seconds

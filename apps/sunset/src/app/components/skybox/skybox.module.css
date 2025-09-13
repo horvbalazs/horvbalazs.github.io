@@ -1,0 +1,14 @@
+.skybox {
+    width: 100vw;
+    height: 100vh;
+    background-color: blueviolet;
+    box-sizing: border-box;
+    padding-inline: 100px;
+    overflow: hidden;
+}
+
+.sunarea {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}

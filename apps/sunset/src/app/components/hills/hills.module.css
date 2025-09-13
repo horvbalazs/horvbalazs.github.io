@@ -1,0 +1,31 @@
+.container {
+    height: 30vh;
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.main {
+    height: 700px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 30px);
+}
+
+.left {
+    height: 400px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.right {
+    height: 400px;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    transform: translateX(-50%);
+}

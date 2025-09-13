@@ -1,0 +1,9 @@
+.sun {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    transform: translate(-50%, 100%);
+    position: absolute;
+}
