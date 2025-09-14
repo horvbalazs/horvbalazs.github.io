@@ -173,7 +173,7 @@
       "federationContainerName": "sunset",
       "moduleName": "Module",
       "alias": "sunset",
-      "entry": "http://localhost:4201/remoteEntry.js"
+      "entry": "https://horvbalazs.github.io/sunset/remoteEntry.js"
     }
   ],
   "exposes": []

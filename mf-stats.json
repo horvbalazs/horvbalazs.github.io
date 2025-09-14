@@ -205,7 +205,7 @@
       "usedIn": [
         "src/app/app.tsx"
       ],
-      "entry": "http://localhost:4201/remoteEntry.js"
+      "entry": "https://horvbalazs.github.io/sunset/remoteEntry.js"
     }
   ],
   "exposes": []
