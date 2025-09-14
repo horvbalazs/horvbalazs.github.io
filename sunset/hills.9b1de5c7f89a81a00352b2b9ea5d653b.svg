@@ -1,0 +1,62 @@
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import * as React from "react";
+var SvgHills = function SvgHills(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    id: "svg2",
+    xmlSpace: "preserve",
+    viewBox: "0 0 496.95 140.95"
+  }, props), /*#__PURE__*/React.createElement("defs", {
+    id: "defs6"
+  }, /*#__PURE__*/React.createElement("linearGradient", {
+    id: "linearGradient24",
+    y2: -124.61,
+    gradientUnits: "userSpaceOnUse",
+    x2: 348.58,
+    gradientTransform: "matrix(-.00976 -1.6 -1.6 .00976 -.015178 112.74)",
+    y1: -124.61,
+    x1: 24.604
+  }, /*#__PURE__*/React.createElement("stop", {
+    id: "stop26",
+    style: {
+      stopColor: "#52c482"
+    },
+    offset: 0
+  }), /*#__PURE__*/React.createElement("stop", {
+    id: "stop28",
+    style: {
+      stopColor: "#4baba7"
+    },
+    offset: 0.2078
+  }), /*#__PURE__*/React.createElement("stop", {
+    id: "stop30",
+    style: {
+      stopColor: "#217387"
+    },
+    offset: 0.5922
+  }), /*#__PURE__*/React.createElement("stop", {
+    id: "stop32",
+    style: {
+      stopColor: "#00140c"
+    },
+    offset: 1
+  }))), /*#__PURE__*/React.createElement("g", {
+    id: "g10",
+    transform: "matrix(1.25 0 0 -1.25 0 140.95)"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "g12"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "g14"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "g16"
+  }, /*#__PURE__*/React.createElement("g", {
+    id: "g22"
+  }, /*#__PURE__*/React.createElement("path", {
+    id: "path34",
+    style: {
+      fillRule: "evenodd",
+      fill: "url(#linearGradient24)"
+    },
+    d: "m397.5 12.812c-0.42-4.266-4.85-7.387-13.28-9.36-4.42-1.012-10.5-1.73-18.24-2.16-17.38-0.957-40.21-1.383-68.48-1.277-32.215 0.316-56.055 0.48-71.52 0.48-11.789 0-28.586 0.133-50.402 0.399-23.199 0.265-40 0.398-50.398 0.398-13.33 0.055-22.34 0.133-27.035 0.242-9.762 0.215-20.481 0.664-32.161 1.36-7.199 0.425-13.492 0.933-18.882 1.519-6.825 0.691-15.465 1.785-25.918 3.281-4.852 0.321-8.481 0.774-10.879 1.36-4.16 1.117-7.387 3.574-9.684 7.359-1.277 2.082-0.586 4.055 2.082 5.918 1.918 1.441 6.055 3.469 12.399 6.082 19.574 8.055 34.617 15.387 45.121 22 10.613 6.719 17.816 11.172 21.601 13.359 8.321 4.696 16 8.243 23.039 10.641 5.547 1.867 14.535 1.68 26.961-0.559 11.52-2.027 20.16-1.519 25.918 1.52 4.696 2.453 10.082 6.16 16.16 11.117 3.414 2.723 8.508 6.883 15.282 12.481 12.425 9.547 24.375 14.132 35.839 13.761 13.282-0.375 27.813-6.906 43.602-19.601 2.133-1.707 8.508-7.199 19.117-16.481 7.629-6.613 13.922-11.547 18.883-14.797 14.984-9.761 34.133-18.882 57.437-27.363 10.774-3.89 17.602-6.48 20.481-7.758 5.922-2.668 9.844-5.336 11.762-8 1.011-1.386 1.414-3.359 1.199-5.921z"
+  })))))));
+};
+export default SvgHills;
