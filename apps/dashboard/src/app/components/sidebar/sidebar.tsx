@@ -27,8 +27,8 @@ const MenuItem: FC<MenuItemProps> = ({ to, children, icon }) => {
     return <li className="relative size-10">
         <MotionNavLink
             to={to}
-            className={active => clsx('bg-[#362e7b] text-[#bcb4cc] hover:bg-[#6360b1] hover:text-[#242c44] p-2 rounded-r-md flex gap-1 z-30 w-24 justify-end absolute transition-all outline outline-[#bcb4cc]', {
-                'bg-[#6360b1] text-[#242c44]': active.isActive,
+            className={active => clsx('bg-[#362e7b] text-[#bcb4cc] hover:bg-[#6360b1] p-2 rounded-r-md flex gap-1 z-30 w-24 justify-end absolute transition-all outline outline-[#bcb4cc]', {
+                'bg-[#6360b1]': active.isActive,
             })}
             initial={false}
             animate={{ left: isActive ? '0' : '-60px' }}

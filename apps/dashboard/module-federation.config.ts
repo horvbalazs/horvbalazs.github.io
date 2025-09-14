@@ -7,9 +7,7 @@ const sharedLibraries: ({ name: string, config: SharedLibraryConfig })[] = [
 
 const moduleFederationConfig: ModuleFederationConfig = {
   name: 'dashboard',
-  remotes: [
-    'sunset',
-  ],
+  remotes: ['sunset'],
 };
 
 export default moduleFederationConfig;

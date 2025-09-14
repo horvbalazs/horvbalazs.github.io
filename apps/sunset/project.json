@@ -15,7 +15,11 @@
         "baseHref": "/",
         "main": "apps/sunset/src/main.ts",
         "tsConfig": "apps/sunset/tsconfig.app.json",
-        "assets": ["apps/sunset/src/favicon.ico", "apps/sunset/src/assets"],
+        "assets": [
+          "apps/sunset/src/favicon.ico",
+          "apps/sunset/src/assets",
+          "apps/sunset/src/404.html"
+        ],
         "styles": ["apps/sunset/src/styles.css"],
         "scripts": [],
         "webpackConfig": "apps/sunset/webpack.config.ts"
@@ -50,7 +54,7 @@
       "options": {
         "buildTarget": "sunset:build",
         "hmr": true,
-        "port": 4202
+        "port": 4201
       },
       "configurations": {
         "development": {
@@ -82,7 +86,7 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "sunset:build",
-        "port": 4202
+        "port": 4201
       },
       "configurations": {
         "development": {

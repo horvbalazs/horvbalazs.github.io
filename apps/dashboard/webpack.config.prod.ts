@@ -24,6 +24,9 @@ const prodConfig: ModuleFederationConfig = {
    *   ['app2', 'http://example.com/path/to/app2/remoteEntry.js'],
    * ]
    */
+  remotes: [
+    ['sunset', 'https://horvbalazs.github.io/sunset/remoteEntry.js']
+  ]
 };
 
 // Nx plugins for webpack to build config object from Nx options and context.
@@ -35,5 +38,13 @@ const prodConfig: ModuleFederationConfig = {
 export default composePlugins(
   withNx(),
   withReact(),
-  withModuleFederation(prodConfig, { dts: false })
+  withModuleFederation(prodConfig, { dts: false }),
+  (config) => {
+    config.output = {
+      ...config.output,
+      publicPath: 'https://horvbalazs.github.io/',
+    }
+
+    return config;
+  }
 );

@@ -15,10 +15,15 @@
         "baseHref": "/",
         "main": "apps/dashboard/src/main.ts",
         "tsConfig": "apps/dashboard/tsconfig.app.json",
-        "assets": ["apps/dashboard/src/favicon.ico", "apps/dashboard/src/assets"],
+        "assets": [
+          "apps/dashboard/src/favicon.ico",
+          "apps/dashboard/src/assets",
+          "apps/dashboard/src/404.html"
+        ],
         "styles": ["apps/dashboard/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/dashboard/webpack.config.ts"
+        "webpackConfig": "apps/dashboard/webpack.config.ts",
+        "postcssConfig": "apps/dashboard/postcss.config.js"
       },
       "configurations": {
         "development": {
@@ -30,19 +35,20 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/dashboard/src/environments/environment.ts",
-              "with": "apps/dashboard/src/environments/environment.prod.ts"
+              "replace": "apps/dashboard/environments/environment.ts",
+              "with": "apps/dashboard/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
           "outputHashing": "all",
           "sourceMap": false,
           "namedChunks": false,
-          "extractLicenses": true,
+          "extractLicenses": false,
           "vendorChunk": false,
           "webpackConfig": "apps/dashboard/webpack.config.prod.ts"
         }
-      }
+      },
+      "dependsOn": ["typecheck"]
     },
     "serve": {
       "executor": "@nx/react:module-federation-dev-server",
@@ -61,7 +67,8 @@
           "buildTarget": "dashboard:build:production",
           "hmr": false
         }
-      }
+      },
+      "dependsOn": ["typecheck"]
     },
     "lint": {
       "executor": "@nx/linter:eslint",
