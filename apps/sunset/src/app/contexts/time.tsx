@@ -1,4 +1,5 @@
-import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react";
+import * as React from 'react';
+import { createContext, FC, PropsWithChildren, useContext, useEffect } from "react";
 import { TIME_TICK } from "../constants/time-tick";
 
 export interface TimeContextValue {
@@ -12,7 +13,7 @@ export const TimeContext = createContext<TimeContextValue>({
 });
 
 export const TimeProvider: FC<PropsWithChildren> = ({ children }) => {
-    const [t, setT] = useState(25);
+    const [t, setT] = React.useState(25);
 
     useEffect(() => {
         const intervalId = setInterval(() => {

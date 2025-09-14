@@ -3,7 +3,6 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/dashboard/src",
   "projectType": "application",
-  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
@@ -11,19 +10,15 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "apps/dashboard/dist",
+        "outputPath": "dist/apps/dashboard",
         "index": "apps/dashboard/src/index.html",
         "baseHref": "/",
         "main": "apps/dashboard/src/main.ts",
         "tsConfig": "apps/dashboard/tsconfig.app.json",
-        "assets": [
-          "apps/dashboard/src/favicon.ico",
-          "apps/dashboard/src/assets"
-        ],
+        "assets": ["apps/dashboard/src/favicon.ico", "apps/dashboard/src/assets"],
         "styles": ["apps/dashboard/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/dashboard/webpack.config.ts",
-        "postcssConfig": "apps/dashboard/postcss.config.js"
+        "webpackConfig": "apps/dashboard/webpack.config.ts"
       },
       "configurations": {
         "development": {
@@ -47,8 +42,7 @@
           "vendorChunk": false,
           "webpackConfig": "apps/dashboard/webpack.config.prod.ts"
         }
-      },
-      "dependsOn": ["^build", "typecheck"]
+      }
     },
     "serve": {
       "executor": "@nx/react:module-federation-dev-server",
@@ -56,7 +50,8 @@
       "options": {
         "buildTarget": "dashboard:build",
         "hmr": true,
-        "port": 4200
+        "port": 4200,
+        "allowedHosts": "all"
       },
       "configurations": {
         "development": {
@@ -66,33 +61,40 @@
           "buildTarget": "dashboard:build:production",
           "hmr": false
         }
-      },
-      "dependsOn": ["typecheck"]
+      }
     },
     "lint": {
-      "executor": "@nx/eslint:lint"
-    },
-    "serve-static": {
-      "executor": "@nx/react:module-federation-static-server",
-      "defaultConfiguration": "production",
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "serveTarget": "dashboard:serve"
-      },
-      "configurations": {
-        "development": {
-          "serveTarget": "dashboard:serve:development"
-        },
-        "production": {
-          "serveTarget": "dashboard:serve:production"
-        }
+        "lintFilePatterns": ["apps/dashboard/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{projectRoot}/test-output/jest/coverage"],
+      "outputs": ["{workspaceRoot}/coverage/apps/dashboard"],
       "options": {
-        "jestConfig": "apps/dashboard/jest.config.ts"
+        "jestConfig": "apps/dashboard/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "dashboard:build",
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "dashboard:build:development"
+        },
+        "production": {
+          "buildTarget": "dashboard:build:production"
+        }
       }
     }
-  }
+  },
+  "tags": [],
+  "implicitDependencies": ["sunset"]
 }

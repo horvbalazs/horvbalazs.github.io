@@ -1,22 +1,20 @@
-import * as React from 'react';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Sidebar } from './components/sidebar/sidebar';
 
 const Sunset = React.lazy(() => import('sunset/Module'));
 
 export function App() {
   return (
-    <>
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="/sunset">🌅 Sunset</Link>
-          </li>
-        </ul>
-      </nav> */}
-
+    <BrowserRouter basename='/'>
       <React.Suspense fallback={<div>Loading...</div>}>
-        <Sunset />
+        <Sidebar />
+        <Routes>
+          <Route path="/sunset" element={<Sunset />} />
+        </Routes>
+
       </React.Suspense>
-    </>
+    </BrowserRouter>
   );
 }
 

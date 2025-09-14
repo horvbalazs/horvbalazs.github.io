@@ -1,16 +1,15 @@
 import { ModuleFederationConfig, SharedLibraryConfig } from "@nx/module-federation";
 
 const sharedLibraries: ({ name: string, config: SharedLibraryConfig })[] = [
-  { name: 'react', config: { singleton: true, strictVersion: true, eager: true, requiredVersion: '19.0.0' } },
-  { name: 'react-dom', config: { singleton: true, strictVersion: true, eager: true, requiredVersion: '19.0.0' } },
+  { name: 'react', config: { singleton: true, strictVersion: true, requiredVersion: false } },
+  { name: 'react-dom', config: { singleton: true, strictVersion: true, requiredVersion: false } },
 ];
 
 const moduleFederationConfig: ModuleFederationConfig = {
   name: 'dashboard',
   remotes: [
-    ['sunset', 'http://localhost:4201/remoteEntry.js'],
+    'sunset',
   ],
-  shared: (library) => sharedLibraries.find((lib) => lib.name === library)?.config ?? false,
 };
 
 export default moduleFederationConfig;

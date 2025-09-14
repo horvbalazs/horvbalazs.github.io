@@ -4,15 +4,6 @@ import { withModuleFederation } from '@nx/module-federation/webpack';
 
 import baseConfig from './module-federation.config';
 
-const config = {
-  ...baseConfig,
-  resolve: {
-    alias: {
-      react: require.resolve('react'),
-      'react-dom': require.resolve('react-dom'),
-    },
-  },
-};
 
 // Nx plugins for webpack to build config object from Nx options and context.
 /**
@@ -23,5 +14,5 @@ const config = {
 export default composePlugins(
   withNx(),
   withReact(),
-  withModuleFederation(config, { dts: false })
+  withModuleFederation(baseConfig, { dts: false }),
 );

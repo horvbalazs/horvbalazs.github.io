@@ -1,42 +1,7 @@
 import { composePlugins, withNx } from '@nx/webpack';
 import { withReact } from '@nx/react';
 import { withModuleFederation } from '@nx/module-federation/webpack';
-
 import baseConfig from './module-federation.config';
-
-const config = {
-  ...baseConfig,
-  module: {
-    rules: [
-      // SVG as React component
-      {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        use: [
-          {
-            loader: '@svgr/webpack',
-            options: {
-              svgo: true,
-              svgoConfig: {
-                plugins: [
-                  { removeViewBox: false },
-                  { cleanupIDs: true },
-                  { removeXMLNS: true },
-                ],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
-  resolve: {
-    alias: {
-      react: require.resolve('react'),
-      'react-dom': require.resolve('react-dom'),
-    },
-  },
-};
 
 // Nx plugins for webpack to build config object from Nx options and context.
 /**
@@ -47,5 +12,33 @@ const config = {
 export default composePlugins(
   withNx(),
   withReact(),
-  withModuleFederation(config, { dts: false })
+  withModuleFederation(baseConfig, { dts: false }),
+  (config) => {
+    config.module = {
+      ...config.module,
+      rules: [
+        ...config.module?.rules ?? [],
+        {
+          test: /\.svg$/i,
+          issuer: /\.[jt]sx?$/,
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgo: true,
+                svgoConfig: {
+                  plugins: [
+                    { name: 'removeViewBox', active: false },
+                    { name: 'removeXMLNS', active: true },
+                  ],
+                },
+              },
+            },
+          ],
+        },
+      ],
+    }
+
+    return config;
+  }
 );

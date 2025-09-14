@@ -3,7 +3,6 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/sunset/src",
   "projectType": "application",
-  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
@@ -11,7 +10,7 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "apps/sunset/dist",
+        "outputPath": "dist/apps/sunset",
         "index": "apps/sunset/src/index.html",
         "baseHref": "/",
         "main": "apps/sunset/src/main.ts",
@@ -43,8 +42,7 @@
           "vendorChunk": false,
           "webpackConfig": "apps/sunset/webpack.config.prod.ts"
         }
-      },
-      "dependsOn": ["^build", "typecheck"]
+      }
     },
     "serve": {
       "executor": "@nx/react:module-federation-dev-server",
@@ -52,7 +50,7 @@
       "options": {
         "buildTarget": "sunset:build",
         "hmr": true,
-        "port": 4201
+        "port": 4202
       },
       "configurations": {
         "development": {
@@ -62,33 +60,39 @@
           "buildTarget": "sunset:build:production",
           "hmr": false
         }
-      },
-      "dependsOn": ["typecheck"]
+      }
     },
     "lint": {
-      "executor": "@nx/eslint:lint"
-    },
-    "serve-static": {
-      "executor": "@nx/react:module-federation-static-server",
-      "defaultConfiguration": "production",
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "serveTarget": "sunset:serve"
-      },
-      "configurations": {
-        "development": {
-          "serveTarget": "sunset:serve:development"
-        },
-        "production": {
-          "serveTarget": "sunset:serve:production"
-        }
+        "lintFilePatterns": ["apps/sunset/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{projectRoot}/test-output/jest/coverage"],
+      "outputs": ["{workspaceRoot}/coverage/apps/sunset"],
       "options": {
-        "jestConfig": "apps/sunset/jest.config.ts"
+        "jestConfig": "apps/sunset/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "sunset:build",
+        "port": 4202
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "sunset:build:development"
+        },
+        "production": {
+          "buildTarget": "sunset:build:production"
+        }
       }
     }
-  }
+  },
+  "tags": []
 }
